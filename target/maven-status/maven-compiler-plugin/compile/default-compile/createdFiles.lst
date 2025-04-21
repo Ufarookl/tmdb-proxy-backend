@@ -1,0 +1,3 @@
+com\backend\tmdb_proxy\service\TMDBService.class
+com\backend\tmdb_proxy\controller\TMDBController.class
+com\backend\tmdb_proxy\TmdbProxyApplication.class
