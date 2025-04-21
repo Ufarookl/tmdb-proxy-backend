@@ -48,22 +48,21 @@ public class TMDBController {
         return ResponseEntity.ok(tmdbService.fetchFromTMDB("/trending/movie/week"));
     }
 
-    @GetMapping("/poster/**")
-    public ResponseEntity<byte[]> getPosterImage(HttpServletRequest request) {
-        String fullPath = request.getRequestURI().replace("/api/movies/poster", "");
-
-        String imageUrl = "https://image.tmdb.org/t/p/w500" + fullPath;
-        System.out.println(imageUrl);
-        try {
-            ResponseEntity<byte[]> response = restTemplate.getForEntity(imageUrl, byte[].class);
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(response.getHeaders().getContentType());
-
-            return new ResponseEntity<>(response.getBody(), headers, HttpStatus.OK);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
-
-    }
+//    @GetMapping("/poster/**")
+//    public ResponseEntity<byte[]> getPosterImage(HttpServletRequest request) {
+//        String fullPath = request.getRequestURI().replace("/api/movies/poster", "");
+//
+//        String imageUrl = "https://image.tmdb.org/t/p/w500" + fullPath;
+//        try {
+//            ResponseEntity<byte[]> response = restTemplate.getForEntity(imageUrl, byte[].class);
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.setContentType(response.getHeaders().getContentType());
+//
+//            return new ResponseEntity<>(response.getBody(), headers, HttpStatus.OK);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+//        }
+//
+//    }
 }
