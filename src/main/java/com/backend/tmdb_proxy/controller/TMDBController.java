@@ -48,6 +48,16 @@ public class TMDBController {
         return ResponseEntity.ok(tmdbService.fetchFromTMDB("/trending/movie/week"));
     }
 
+    @GetMapping("/movie/{movieId}/videos")
+    public ResponseEntity<String> getMovieVideos(@PathVariable String movieId) {
+        try {
+            String response = tmdbService.getMovieVideos(movieId);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong.");
+        }
+    }
+
 //    @GetMapping("/poster/**")
 //    public ResponseEntity<byte[]> getPosterImage(HttpServletRequest request) {
 //        String fullPath = request.getRequestURI().replace("/api/movies/poster", "");
