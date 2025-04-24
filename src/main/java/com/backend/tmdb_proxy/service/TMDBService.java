@@ -56,5 +56,24 @@ public class TMDBService {
         return response.getBody();
     }
 
+    public String searchMovie(String movieName) {
+        String url = "https://api.themoviedb.org/3/search/movie?query=" + movieName +
+                "&include_adult=false&language=en-US&page=1";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", apiKey);
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                entity,
+                String.class
+        );
+
+        return response.getBody();
+    }
+
 
 }

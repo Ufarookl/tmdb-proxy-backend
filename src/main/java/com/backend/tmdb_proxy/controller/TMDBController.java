@@ -58,6 +58,13 @@ public class TMDBController {
         }
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<String> searchMovies(@RequestParam String query) {
+        System.out.println(query);
+        String response = tmdbService.searchMovie(query);
+        return ResponseEntity.ok(response);
+    }
+
 //    @GetMapping("/poster/**")
 //    public ResponseEntity<byte[]> getPosterImage(HttpServletRequest request) {
 //        String fullPath = request.getRequestURI().replace("/api/movies/poster", "");
